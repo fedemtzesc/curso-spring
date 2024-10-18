@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${tittle}">Document</title>
+</head>
+<body style="color:red;font-family: Arial;">
+    <h1 th:text="${h1Content}"></h1>
+    <h4 th:text="'Creador: ' + ${name} + ' ' + ${lastname}"></h4>
+    <p>
+        Este ejemplo muestra como pasar parametros a una pagina Thymeleaf desde
+        el controlador!
+    </p>
+</body>
+</html>

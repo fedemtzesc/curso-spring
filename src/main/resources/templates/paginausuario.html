@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${tittle}">Document</title>
+</head>
+<body style="color:green;font-family: Arial;">
+    <table>
+        <tr>
+            <td>Nombre :</td>
+            <td th:text="${user.name}"></td>
+        </tr>
+        <tr>
+            <td>Apellidos :</td>
+            <td th:text="${user.lastName}"></td>
+        </tr>
+        <tr>
+            <td>E-mail :</td>
+            <td th:text="${user.email}"></td>
+        </tr>
+        <tr th:if="${user.telephone}">
+            <td>Telefono :</td>
+            <td th:text="${user.telephone}"></td>
+        </tr>
+        <tr th:if="${user.telephone==null}">
+            <td>Telefono :</td>
+            <td th:text="${'N/A'}"></td>
+        </tr>
+        <tr>
+            <td>Negocio :</td>
+            <td th:text="${bussiness_name}"></td>
+        </tr>
+        <tr>
+            <td>Autor :</td>
+            <td th:text="${app_author}"></td>
+        </tr>
+    </table>
+    <p>
+        Este ejemplo muestra como pasar objetos con datos a una pagina Thymeleaf desde
+        el controlador!
+    </p>
+</body>
+</html>
