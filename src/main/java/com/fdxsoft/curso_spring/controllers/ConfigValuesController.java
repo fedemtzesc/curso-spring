@@ -27,6 +27,9 @@ public class ConfigValuesController {
     private String[] sisterList;
     @Value("#{'${config.owner.sisters}'.toUpperCase()}")
     private String stringList;
+    @Value("${APP_ROGRAMMER}")
+    private String appProgrammer;
+
 
 
     @GetMapping("/show-config-values")
@@ -41,6 +44,7 @@ public class ConfigValuesController {
         values.put("config.owner.sisters", sisters);
         values.put("config.owner.sisters2", sisterList);
         values.put("systers.upper", stringList);
+        values.put("app.programmer", appProgrammer);
         return values;
     }
     
