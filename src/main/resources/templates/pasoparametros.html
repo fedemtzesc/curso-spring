@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${tittle}">Document</title>
+    <style th:inline="text">
+        body {
+            color:[(${text_color})];
+        }
+    </style>
 </head>
-<body style="color:red;font-family: Arial;">
+<body>
     <h1 th:text="${h1Content}"></h1>
     <h4 th:text="'Creador: ' + ${name} + ' ' + ${lastname}"></h4>
     <p>
         Este ejemplo muestra como pasar parametros a una pagina Thymeleaf desde
-        el controlador!
+        el controlador <br>y como controlar algunos estilos de la pagina tambien!
     </p>
 </body>
 </html>

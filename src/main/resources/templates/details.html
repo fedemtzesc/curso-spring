@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,5 +7,24 @@
 </head>
 <body>
     <h1>Hola Mundo! Desde Detalles</h1>
+
+    <!-- ****** ESTE ES UN EJEMPLO DEL USO DEL HREF DEL THYMELEAF ****** -->
+
+    <!-- Aqui mandamos llamar a un metodo que manda llamar a un template que se forma con datos del Model -->
+    <a th:href="@{/model-map-list}">Ver Listado (HTML)</a> <br>
+    
+    <!-- Aqui solo mandamos llamar a una API JSON -->
+    <a th:href="@{/api/show-config-values}">Ir a configuraciones (REST)</a><br>
+
+    <!-- El parametro message viene en el objeto Model de la llamada a este template -->
+    <a th:href="@{'/api/parametro-test?nombre=' + ${message}}">Llamada con parametros (REST/String)</a><br>
+    
+    <!-- Esta es otra forma distinta de hacer una llamada con parametros, y pueden ir separados por coma -->
+    <a th:href="@{/api/parametro-test(nombre='Otra Forma')}">Llamada con pa rametros (REST/String)</a><br>
+
+    <!-- Aqui un ejemplo con el otro formato de envio de parametros, separados por coma -->
+    <a th:href="@{/api/user-dto-param(name='FDXSOFT',lastName='SA DE CV',email='fdx.soft.mx@gmail.com',phone=8110099414)}">Con varios parametros</a><br>
+
+    <a th:href="@{/api/path/'Hasta que el dinero nos separe'}">Path Variable</a>
 </body>
 </html>

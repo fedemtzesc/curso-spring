@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySources;
 @Configuration
 @PropertySources({
     @PropertySource(value = "classpath:customconfig.properties", encoding = "UTF-8"),
-    @PropertySource(value = "classpath:otro.properties", encoding = "UTF-8")
+    @PropertySource(value = "classpath:otro.properties", encoding = "UTF-8") //UTF-8 es para mostrar caracteres especiales
 })
 public class ConfigFile {
     /*

@@ -25,6 +25,8 @@ public class RequestParamController {
         }
     }
 
+    //URL de ejemplo:
+    //http://localhost:5050/api/user-dto-param?name=Federico&lastName=Martinez&email=fdxsoft@gmail.com&phone=8110099414
     @GetMapping("/user-dto-param")
     public UserDTO getUserDTOParam(@RequestParam(required = false) String name, 
                                     @RequestParam(required = false) String lastName,
@@ -39,7 +41,9 @@ public class RequestParamController {
     }
 
     // Este metodo se utiliza cuando son muchos los parametros que se tienen que recibir
-    @GetMapping("httpservletrequest")
+    //URL de ejemplo:
+    //http://localhost:5050/api/httpservletrequest?name=Federico&lastName=Martinez&email=fdxsoft@gmail.com&phone=8110099414
+    @GetMapping("/httpservletrequest")
     public UserModel requestExample(HttpServletRequest request){
         UserModel userModel = new UserModel();
         userModel.setName(request.getParameter("name"));

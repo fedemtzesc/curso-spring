@@ -19,16 +19,12 @@ import com.fdxsoft.curso_spring.models.UserModel;
 
 @Controller
 public class UserController {
-
-    @Value("${BUSSINESS_NAME}")
-    private String bussiness_name;
-
     @Value("${program.author}")
     private String app_author;
     
     @GetMapping("details")
-    public String details() {
-        
+    public String details(Model model) {
+        model.addAttribute("message", "Hola Mundo!");
         return "details";
     }
 
@@ -42,6 +38,7 @@ public class UserController {
          model.addAttribute("h1Content", "Usando el objeto Model de Spring");
          model.addAttribute("name", "Federico");
          model.addAttribute("lastname", "Martinez");
+         model.addAttribute("text_color", "#ff0000");
          return "pasoparametros";
     }
 
@@ -51,6 +48,7 @@ public class UserController {
          model.put("h1Content", "Usando el objeto Model de Spring");
          model.put("name", "Federico");
          model.put("lastname", "Martinez");
+         model.put("text_color", "#00aa00");
          //La misma plantilla funciona tanto para recibir parametros con 
          //Model o con Map
          return "pasoparametros";
@@ -62,7 +60,6 @@ public class UserController {
         UserModel userModel = new UserModel("Alicia", "Martinez", "pdlga_alicia@gmail.com", null);
         model.addAttribute("user", userModel);
         model.addAttribute("tittle", "Paso de Datos a Pagina");
-        model.addAttribute("bussiness_name", bussiness_name);
         model.addAttribute("app_author", app_author);
         return "paginausuario";
     }
@@ -88,6 +85,8 @@ public class UserController {
         return "list";
     }
     
+    //Este metodo genera los usuarios. regresa un objeto users, el cual mete a la
+    //sesion para que se pueda utilizar dentro de la plantilla list.html
     @ModelAttribute("users")
     public List<UserModel> getUserList(){
         List<UserModel> users = new ArrayList<>();

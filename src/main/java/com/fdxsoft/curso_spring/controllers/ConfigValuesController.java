@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,10 +29,17 @@ public class ConfigValuesController {
     private String[] sisterList;
     @Value("#{'${config.owner.sisters}'.toUpperCase()}")
     private String stringList;
-    @Value("${APP_ROGRAMMER}")
-    private String appProgrammer;
+    //Para los tipos de dato mapa se tiene que usar esta sintaxis
+    @Value("#{${config.values.map}}")
+    private Map<String,Object> mapa;
+    //Y podemos obtener llaves del mapa de forma individual asi:
+    @Value("#{${config.values.map}.price}") //la llave price esta en el mapa en el *.properties
+    private String price;
 
-
+    //Otra manera de acceder a las variables de los archivos properties es usando el bean que 
+    //acompaña a Spring-Boot llamado Environment
+    @Autowired
+    Environment env;
 
     @GetMapping("/show-config-values")
     public Map<String, Object> getConfigValues(@Value("${config.owner.sisters}") List<String> sisters) {
@@ -44,7 +53,12 @@ public class ConfigValuesController {
         values.put("config.owner.sisters", sisters);
         values.put("config.owner.sisters2", sisterList);
         values.put("systers.upper", stringList);
-        values.put("app.programmer", appProgrammer);
+        values.put("mapa", mapa);
+        values.put("price", price);
+        //Estos son dos ejemplos de uso del bean Environment
+        values.put("env.message",env.getProperty("env.message"));
+        values.put("code", env.getProperty("env.code", Long.class));
+
         return values;
     }
     

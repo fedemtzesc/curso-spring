@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,5 +64,11 @@ public class UserRESTController {
         
         return users;
     }
+
+    @GetMapping("path/{variable}")
+    public String getMethodName(@PathVariable String variable) {
+        return "EL valor de la variable es " + variable;
+    }
+    
     
 }
